@@ -1,0 +1,3 @@
+[build]
+  command = "php index.php"
+  publish = "path/to/public/directory"
