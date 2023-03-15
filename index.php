@@ -1,7 +1,7 @@
 <?php
 
 require('session.php');
-require_once('service.php');
+require_once('Service.php');
 require_once('ServiceLog.php');
 require_once('ServiceInput.php');
 require_once('ServiceQuestion.php');
