@@ -6,8 +6,6 @@ $_SESSION['animals'] = $_SESSION['animals'] ?? ['macaco', 'baleia', 'dragão'];
 $_SESSION['skills'] = $_SESSION['skills'] ?? ['sobe em árvore', 'vive na água', 'gospe fogo'];
 $_SESSION['animalsSkills'] = $_SESSION['animalsSkills'] ?? ['macaco' => 'sobe em árvore', 'baleia' => 'vive na água', 'dragão' => 'gospe fogo'];
 
-$_SESSION['showPicture'] = $_SESSION['showPicture'] ?? false;
-
 $_SESSION['possibleAnimals'] = $_SESSION['possibleAnimals'] ?? $_SESSION['animals'];
 $_SESSION['animalAtual'] = count(array_values($_SESSION['possibleAnimals'])) > 0 ? array_values($_SESSION['possibleAnimals'])[0] : $_SESSION['animalAtual'];
 $_SESSION['skillAtual'] = $_SESSION['skillAtual'] ?? $_SESSION['skills'][0];

@@ -1,19 +1,17 @@
 <?php
 
 require('session.php');
-require_once('Service.php');
+require_once('service.php');
 require_once('ServiceLog.php');
 require_once('ServiceInput.php');
 require_once('ServiceQuestion.php');
-require_once('ServiceAnimalPicture.php');
 
 $service = new Service;
 $serviceLog = new ServiceLog;
 $serviceInput = new ServiceInput;
 $serviceQuestion = new ServiceQuestion;
-$serviceAnimalPicture = new ServiceAnimalPicture;
 
-if (isset($_REQUEST['start']) || isset($_SESSION['start'])) {
+if (isset($_POST['start']) || isset($_SESSION['start'])) {
     $inputRadio = $serviceInput->setInputRadio('add')->getInputRadio();
     $serviceQuestion->setQuestion();
 }
@@ -25,22 +23,17 @@ if (isset($_SESSION['victory']) || $_SESSION['index'] === 5) {
     $service->playAgain();
 }
 
-if (count($_SESSION['possibleAnimals']) === 0 || ($_SESSION['index'] === 3 && $_REQUEST['response'] === 'no') || $_SESSION['index'] === 4) {
+if (count($_SESSION['possibleAnimals']) === 0 || ($_SESSION['index'] === 3 && $_POST['response'] === 'no') || $_SESSION['index'] === 4) {
     $serviceInput->setInputRadio('remove');
     $serviceInput->setInputText('add');
 }
 
 if (!isset($_SESSION['index'])) $serviceInput->setInputText('remove');
 
-if ($_SESSION['showPicture'] === true) {
-    $serviceAnimalPicture->setAnimalPicture();
-}
-
 $inputRadio = $serviceInput->getInputRadio();
 $inputText = $serviceInput->getInputText();
 $btn = $serviceInput->getBtn();
 $question = $serviceQuestion->getText();
-$animalPicture = $serviceAnimalPicture->getAnimalPicture();
 
 // $logAnimal = $serviceLog->logAnimal();
 // $logSkill = $serviceLog->logSkill();
@@ -63,7 +56,6 @@ $animalPicture = $serviceAnimalPicture->getAnimalPicture();
     </div> -->
     <form action="" method="POST" align='center'>
         <input type="checkbox" name="start" id="start" checked style="display: none;">
-        <?php echo $animalPicture ?>
         <?php echo $question ?>
         <?php echo $inputRadio ?>
         <?php echo $inputText ?>
